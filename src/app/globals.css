@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: var(--tw-colors-white_bg);
+  color: var(--tw-colors-dark_text);
+  overflow-x: hidden;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.grid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.service-card {
+  background: var(--tw-colors-light_card_bg);
+  border: 1px solid var(--tw-colors-light_border);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease-out;
+  position: relative;
+  z-index: 0;
+}
+
+.service-card:hover {
+  border-color: var(--tw-colors-aitron_accent);
+  background: rgba(0, 184, 217, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.text-stroke-only {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+  color: var(--tw-colors-dark_text);
+}
+
+.hero-name:hover .text-stroke-only {
+  color: var(--tw-colors-aitron_secondary);
+  -webkit-text-stroke: 0px;
+}
+
+.text-rotator-container {
+  height: 1.1em;
+  overflow: hidden;
+  line-height: 1.1;
+  background-color: var(--tw-colors-white_bg);
+  position: relative;
+  z-index: 20;
+  padding: 0;
+}
+
+.text-rotator-list {
+  animation: slide-up 10s steps(4, end) infinite;
+  overflow: hidden;
+  will-change: transform;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.sector-video-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  min-height: 420px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: stretch;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.sector-video-card.is-playing {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.sector-video-card video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+  filter: brightness(0.72) saturate(0.98);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sector-video-card.is-playing video {
+  transform: scale(1.12);
+  filter: brightness(0.56) saturate(1.02);
+}
+
+.sector-video-card .card-content {
+  position: relative;
+  z-index: 3;
+  padding: 1.25rem 1.5rem 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.45) 75%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  gap: 0.5rem;
+}
+
+.card-content h3 {
+  font-size: 1.75rem;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.card-footer {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.card-footer .tag {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.72rem;
+  border-radius: 6px;
+}
+
+.sector-video-card:hover video {
+  transform: scale(1.14);
+  filter: brightness(0.52) saturate(1.02);
+}
+
+@media (max-width: 1024px) {
+  .sector-video-card {
+    min-height: 320px;
+  }
+  .card-content h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .sector-video-card {
+    min-height: 220px;
+  }
+  .card-content {
+    padding: 1rem;
+  }
+}
