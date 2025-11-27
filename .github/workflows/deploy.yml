@@ -26,8 +26,6 @@ jobs:
 
       - name: Build Next.js app
         run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /aitron
 
       - name: Add .nojekyll file
         run: touch out/.nojekyll
