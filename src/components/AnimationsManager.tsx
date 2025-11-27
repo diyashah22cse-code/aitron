@@ -43,20 +43,34 @@ export default function AnimationsManager() {
     });
 
     // Methodology Cards with Scale — reveal once and keep visible
-    gsap.from("#methodology .service-card", {
+    // Use .to() instead of .from() to ensure cards are visible by default,
+    // then animate them upward/scale-in when ScrollTrigger fires
+    gsap.to("#methodology .service-card", {
       scrollTrigger: {
         trigger: "#methodology",
         start: "top 75%",
         toggleActions: "play none none none",
       },
-      scale: 0.8,
-      opacity: 0,
-      y: 50,
+      scale: 1,
+      opacity: 1,
+      y: 0,
       duration: 0.9,
       stagger: 0.2,
       ease: "back.out(1.2)",
+      // Set default state before animation runs
+      immediateRender: false,
     });
 
+    // Set initial state (before the .to() animation)
+    gsap.set("#methodology .service-card", {
+      scale: 0.8,
+      opacity: 1,  // Keep visible initially instead of 0
+      y: 50,
+    });
+
+    // Ensure ScrollTrigger measurements are correct after any layout changes
+    // (helps when using smooth-scrolling libraries or dynamic content)
+    ScrollTrigger.refresh();
     // Project Rows - Slide from left
     gsap.from(".project-row", {
       scrollTrigger: {
