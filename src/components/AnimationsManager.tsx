@@ -64,7 +64,7 @@ export default function AnimationsManager() {
     // Set initial state (before the .to() animation)
     gsap.set("#methodology .service-card", {
       scale: 0.8,
-      opacity: 1,  // Keep visible initially instead of 0
+      opacity: 1, // Keep visible initially instead of 0
       y: 50,
     });
 

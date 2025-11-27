@@ -32,8 +32,12 @@ export default function ResourcesSection() {
       aria-label="Resources"
     >
       <div className="px-6 md:px-24 mb-16">
-        <div className="font-mono text-aitron_accent text-xs mb-2">03 / RESOURCES</div>
-        <h2 className="font-sans text-4xl md:text-6xl mb-4 text-dark_text">LEARN & CONNECT</h2>
+        <div className="font-mono text-aitron_accent text-xs mb-2">
+          03 / RESOURCES
+        </div>
+        <h2 className="font-sans text-4xl md:text-6xl mb-4 text-dark_text">
+          CONNECT AND COLLABORATE
+        </h2>
       </div>
 
       <div className="border-y border-light_border">
@@ -44,7 +48,10 @@ export default function ResourcesSection() {
           >
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-4">
-                <span className="font-mono text-aitron_secondary text-sm" aria-hidden="true">
+                <span
+                  className="font-mono text-aitron_secondary text-sm"
+                  aria-hidden="true"
+                >
                   {resource.number}
                 </span>
                 <h3 className="font-sans text-4xl group-hover:translate-x-2 transition-transform duration-300 text-dark_text">
